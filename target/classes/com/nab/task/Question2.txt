@@ -1,0 +1,25 @@
+a) When the main method exits what would the value of count.getCount be?
+
+Value of count.getCount will be 2000
+
+
+b) If we introduced a third runner, i.e., CountRunner runnerC = new CountRunner(count),
+what changes to the code will need to be made for count.getCount to return 3000 everytime the main
+method is run?
+
+
+class TestCount {
+	public static void main(String[] args) throws Exception {
+		Count count = new Count();
+		CountRunner runnerA = new CountRunner(count);
+		CountRunner runnerB = new CountRunner(count);
+		CountRunner runnerC = new CountRunner(count); //Added
+		runnerA.start();
+		runnerB.start();
+		runnerC.start(); //Added
+		runnerA.join();
+		runnerB.join();
+		runnerC.join(); //Added
+		System.out.println("count.getCount = " + count.getCount());
+	}
+}
